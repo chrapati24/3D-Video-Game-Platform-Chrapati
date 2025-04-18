@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3n5vb8l4y8ak"]
+
+[ext_resource type="Script" uid="uid://bv2nedda3ywby" path="res://scripts/ui/ui_debug.gd" id="1_1rlgf"]
+
+[node name="ui_debug" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1rlgf")
+
+[node name="player_pos_label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="control_guide_label" type="Label" parent="."]
+offset_top = 552.0
+offset_right = 40.0
+offset_bottom = 575.0
+text = "✖ Jump | Ⓛ Movement"

@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkg3w5dov3voc"]
+
+[ext_resource type="Script" uid="uid://bvqqje5nr2ao5" path="res://scripts/player.gd" id="1_quhj4"]
+[ext_resource type="Environment" uid="uid://6dkdxp3x0fcm" path="res://config/environment_default.tres" id="2_g2els"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ikqwj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_53ukw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g2els"]
+
+[node name="player" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_quhj4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+layers = 2
+mesh = SubResource("CapsuleMesh_ikqwj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_53ukw")
+
+[node name="CameraPivot" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D/CameraPivot"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 1)
+shape = SubResource("SphereShape3D_g2els")
+spring_length = 3.0
+
+[node name="TPSCamera" type="Camera3D" parent="CharacterBody3D/CameraPivot/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 0.942221, 0.334991, 0, -0.334991, 0.942221, 0, 1.1924, 2.76689)
+environment = ExtResource("2_g2els")

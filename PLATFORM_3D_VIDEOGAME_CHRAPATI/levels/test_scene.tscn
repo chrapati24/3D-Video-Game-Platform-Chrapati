@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://c4t8pfqkv5rfb"]
+
+[ext_resource type="Script" uid="uid://d20y3lr6e2306" path="res://scripts/levels/test_scene.gd" id="1_2d4fy"]
+[ext_resource type="PackedScene" uid="uid://dkg3w5dov3voc" path="res://scenes/player.tscn" id="1_nqxho"]
+[ext_resource type="PackedScene" uid="uid://b3n5vb8l4y8ak" path="res://scenes/ui/ui_debug.tscn" id="2_gv8m6"]
+[ext_resource type="PackedScene" uid="uid://bewrpcalq0bgn" path="res://scenes/ui/death_screen.tscn" id="2_ohqux"]
+[ext_resource type="Environment" uid="uid://6dkdxp3x0fcm" path="res://config/environment_default.tres" id="3_x46hq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aowpi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohqux"]
+albedo_color = Color(0.752865, 0.470354, 0.0420328, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nnhkk"]
+material = SubResource("StandardMaterial3D_ohqux")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ohqux"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a47p7"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a47p7"]
+material = SubResource("StandardMaterial3D_a47p7")
+
+[node name="test_scene" type="Node3D"]
+process_mode = 1
+script = ExtResource("1_2d4fy")
+
+[node name="death_screen" parent="." instance=ExtResource("2_ohqux")]
+
+[node name="ui_debug" parent="." instance=ExtResource("2_gv8m6")]
+
+[node name="floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+transform = Transform3D(100, 0, 0, 0, 0.1, 0, 0, 0, 100, 0, 0, 0)
+shape = SubResource("BoxShape3D_aowpi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+transform = Transform3D(100, 0, 0, 0, 0.1, 0, 0, 0, 100, 0, 0, 0)
+mesh = SubResource("BoxMesh_nnhkk")
+
+[node name="wall" type="StaticBody3D" parent="."]
+transform = Transform3D(0.23, 0, 0, 0, 69.345, 0, 0, 0, 0.695, -5.00302, 3.38229, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall"]
+transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("BoxShape3D_aowpi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall"]
+transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_nnhkk")
+
+[node name="cylinder" type="StaticBody3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 69.345, 0, 0, 0, 0.7, -5.00302, 3.38229, 17.6095)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cylinder"]
+transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("CylinderShape3D_ohqux")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="cylinder"]
+transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("CylinderMesh_a47p7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.983738, 0.179609, 0, -0.179609, -0.983738, 0, 323.041, -95.9125)
+
+[node name="Camera3DTop" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.884524, 0.466495, 0, -0.466495, 0.884524, 0, 8.27635, 12.6422)
+environment = ExtResource("3_x46hq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00108203, 0.999999, 0, -0.999999, -0.00108203, 0, 10, 0.5)
+environment = ExtResource("3_x46hq")
+
+[node name="player" parent="." instance=ExtResource("1_nqxho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.35377, 0)

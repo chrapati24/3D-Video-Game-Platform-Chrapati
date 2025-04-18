@@ -1,0 +1,128 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb60gbg8bfqw3"]
+
+[ext_resource type="Script" uid="uid://b6mr6itdu8fof" path="res://scripts/ui/pause_screen.gd" id="1_milqs"]
+[ext_resource type="AudioStream" uid="uid://dtn2vohmd4cud" path="res://assets/sfx/ui_select.wav" id="2_xceqw"]
+[ext_resource type="AudioStream" uid="uid://dghtgclyesmmw" path="res://assets/sfx/ui_nav.wav" id="3_nxavn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rcg5l"]
+font_size = 46
+
+[node name="PauseScreen" type="Control"]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_milqs")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.231373, 0.321569, 1, 0.352941)
+
+[node name="MainPauseMenu" type="CenterContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainerMain" type="VBoxContainer" parent="CanvasLayer/MainPauseMenu"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPauseMenu/VBoxContainerMain"]
+layout_mode = 2
+text = "Pause"
+label_settings = SubResource("LabelSettings_rcg5l")
+
+[node name="VBoxContainerBtn" type="VBoxContainer" parent="CanvasLayer/MainPauseMenu/VBoxContainerMain"]
+layout_mode = 2
+
+[node name="resume_btn" type="Button" parent="CanvasLayer/MainPauseMenu/VBoxContainerMain/VBoxContainerBtn"]
+layout_mode = 2
+text = "Resume"
+
+[node name="options_btn" type="Button" parent="CanvasLayer/MainPauseMenu/VBoxContainerMain/VBoxContainerBtn"]
+layout_mode = 2
+text = "Options"
+
+[node name="hub_btn" type="Button" parent="CanvasLayer/MainPauseMenu/VBoxContainerMain/VBoxContainerBtn"]
+layout_mode = 2
+text = "Back to Hub
+"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/MainPauseMenu/VBoxContainerMain/VBoxContainerBtn"]
+layout_mode = 2
+
+[node name="credits_btn" type="Button" parent="CanvasLayer/MainPauseMenu/VBoxContainerMain/VBoxContainerBtn"]
+layout_mode = 2
+text = "Credits"
+
+[node name="quit_btn" type="Button" parent="CanvasLayer/MainPauseMenu/VBoxContainerMain/VBoxContainerBtn"]
+layout_mode = 2
+text = "Quit"
+
+[node name="CreditsPauseMenu" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CreditsPauseMenu"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/CreditsPauseMenu/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(1000, 50)
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Chrapati 3D Platform Project[/b]
+Copyright © 2025 Chrapati. All rights reserved.
+
+[b]Godot Engine[/b]
+Copyright (c) 2014-present Godot Engine contributors.
+Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the \"Software\"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+
+  -- Godot Engine <https://godotengine.org>"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CreditsPauseMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="back_pause_btn" type="Button" parent="CanvasLayer/CreditsPauseMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Back to Pause menu"
+
+[node name="UISelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xceqw")
+
+[node name="UINavSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nxavn")

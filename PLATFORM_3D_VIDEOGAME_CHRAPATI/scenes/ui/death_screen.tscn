@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://bewrpcalq0bgn"]
+
+[ext_resource type="Script" uid="uid://u6r15jxxkma1" path="res://scripts/ui/death_screen.gd" id="1_j0ehl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jvypc"]
+font_size = 41
+
+[node name="death_screen" type="Control"]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j0ehl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.235294)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "You died. Reborn ?"
+label_settings = SubResource("LabelSettings_jvypc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="yes_btn" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Yes"
+
+[node name="no_btn" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "No"
